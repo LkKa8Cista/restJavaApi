@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="53896d62-adef-46ea-a406-ac9d9d0dc200" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Controller/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Core/CarCore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Data/CarData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Enums/Enums.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Exceptions/CarException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Models/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Models/CarBrand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Models/CarModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Models/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/Models/Seller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/java/upskill/example/CarStandMNG/CarStandMngApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CarStandMng/src/test/java/upskill/example/CarStandMNG/CarStandMngApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.Net/Food/.vs/Food/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../.Net/Food/.vs/Food/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarStandMng/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../CarStandMng/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarStandMng/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarStandMng/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../CarStandMng/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarStandMng/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CarStandMng/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarStandMng/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../CarStandMng/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarStandMng/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../CarStandMng/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarStandMng/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarStandMng/src/main/java/org/example/Main.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="try-again" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="try-again" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="try-again" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2cRlSjpDMCXINHPnQUdGzuhrTYA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.try-again [bootRun].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Luís Alves/Downloads/try-again"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="try-again [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.try-again [bootRun]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="53896d62-adef-46ea-a406-ac9d9d0dc200" name="Changes" comment="" />
+      <created>1708082275210</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708082275210</updated>
+    </task>
+    <servers />
+  </component>
+</project>
