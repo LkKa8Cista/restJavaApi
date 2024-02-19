@@ -16,7 +16,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @RestController
 //@RequestMapping("/api/")
-public class Controller {
+public class CarController {
 
     @Autowired
     CarCore carCore;
@@ -49,8 +49,4 @@ public class Controller {
         carCore.AddNewCar(car);
         return new ResponseEntity<>(car,HttpStatus.OK);
     }
-
-    //////////////////////////////////////////////////////////////////////////////
-
-
 }

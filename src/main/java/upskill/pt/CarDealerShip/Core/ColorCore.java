@@ -1,10 +1,8 @@
 package upskill.pt.CarDealerShip.Core;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import upskill.pt.CarDealerShip.Data.CarData;
 import upskill.pt.CarDealerShip.Data.ColorData;
 import upskill.pt.CarDealerShip.Exceptions.CarException;
-import upskill.pt.CarDealerShip.Models.Car;
 import upskill.pt.CarDealerShip.Models.Color;
 
 import java.util.List;

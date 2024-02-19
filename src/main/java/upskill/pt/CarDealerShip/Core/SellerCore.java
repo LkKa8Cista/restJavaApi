@@ -1,10 +1,8 @@
 package upskill.pt.CarDealerShip.Core;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import upskill.pt.CarDealerShip.Data.CarModelData;
 import upskill.pt.CarDealerShip.Data.SellerData;
 import upskill.pt.CarDealerShip.Exceptions.CarException;
-import upskill.pt.CarDealerShip.Models.CarModel;
 import upskill.pt.CarDealerShip.Models.Seller;
 
 import java.util.List;
@@ -38,7 +36,7 @@ public class SellerCore {
         return seller;
     }
 
-    public Seller GetCarModelById(int id) throws CarException {
+    public Seller GetCarSellerById(int id) throws CarException {
         if(data.existsById(id)){
             return data.findById(id).get();
         } else {
