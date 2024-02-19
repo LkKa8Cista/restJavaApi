@@ -42,7 +42,7 @@ public class ColorCore {
         if(data.existsById(id)){
             return data.findById(id).get();
         } else {
-            throw new CarException("Car", "GetCarByVin", "Vin did not exist") ;
+            throw new CarException("Color", "GetColorById", "Id did not exist") ;
         }
     }
 }
