@@ -1,12 +1,20 @@
 package upskill.pt.CarDealerShip.Core;
 
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import upskill.pt.CarDealerShip.DTOs.CarModelDTO;
+import upskill.pt.CarDealerShip.DTOs.ColorDTO;
 import upskill.pt.CarDealerShip.Data.CarModelData;
 import upskill.pt.CarDealerShip.Exceptions.CarException;
 import upskill.pt.CarDealerShip.Models.CarModel;
 
 import java.util.List;
 
+@Service
+@NoArgsConstructor
 public class CarModelCore {
     @Autowired
     CarModelData data;
@@ -15,15 +23,8 @@ public class CarModelCore {
         this.data = data;
     }
 
-    public List<CarModel> Get100CarModels(int page) {
-        int[] a = new int [2];
-        if (page < 2){
-            a[1] = 99;
-        } else {
-            a[0] = page * 100 - 100;
-            a[1] = page * 100 -1;
-        }
-        return data.findAll().subList(a[0], Math.min(a[1] + 1, data.findAll().size()));
+    public Page<CarModelDTO> GetCarModels(int page, int size) {
+        return this.data.findAll(PageRequest.of(page,size)).map(CarModelDTO::toCarModelDTO);
     }
 
     public CarModel AddNewCarModel(CarModel model) throws CarException {

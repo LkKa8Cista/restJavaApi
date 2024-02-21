@@ -1,23 +1,30 @@
 package upskill.pt.CarDealerShip.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import upskill.pt.CarDealerShip.Core.ColorCore;
+import upskill.pt.CarDealerShip.DTOs.ColorDTO;
 import upskill.pt.CarDealerShip.Exceptions.CarException;
 import upskill.pt.CarDealerShip.Models.Color;
 
 import java.util.List;
+import java.util.Optional;
 
-//@RestController
+@RestController
 public class ColorController {
     @Autowired
     ColorCore colorCore;
 
-    @GetMapping(value = "/colors/{page}", produces = "application/json")
-    public ResponseEntity<List<Color>> get100Colors(@PathVariable("page") int page){
-        List<Color> colors = colorCore.Get100Colors(page);
+    @GetMapping(value = "/colors", produces = "application/json")
+    public ResponseEntity<Page<ColorDTO>> getColors(@RequestParam Optional<Integer> page, @RequestParam Optional<Integer> size){
+        int _page=page.orElse(0);
+        int _size=size.orElse(10);
+
+        Page<ColorDTO> colors = this.colorCore.GetColors(_page,_size);
+
         return new ResponseEntity<>(colors, HttpStatus.OK);
     }
 

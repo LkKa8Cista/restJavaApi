@@ -1,18 +1,20 @@
 package upskill.pt.CarDealerShip.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import upskill.pt.CarDealerShip.Core.SellerCore;
+import upskill.pt.CarDealerShip.DTOs.SellerDTO;
 import upskill.pt.CarDealerShip.Exceptions.CarException;
-import upskill.pt.CarDealerShip.Models.CarModel;
 import upskill.pt.CarDealerShip.Models.Seller;
 
 import java.util.List;
+import java.util.Optional;
 
-//@RestController
-public class SellerControoller{
+@RestController
+public class SellerController {
     @Autowired
     SellerCore sellerCore;
 
@@ -23,9 +25,13 @@ public class SellerControoller{
 //    }
 
 
-    @GetMapping(value = "/sellers/{page}", produces = "application/json")
-    public ResponseEntity<List<Seller>> get100CarsModels(@PathVariable("page") int page){
-        List<Seller> sellers = sellerCore.Get100Sellers(page);
+    @GetMapping(value = "/sellers", produces = "application/json")
+    public ResponseEntity<Page<SellerDTO>> getSellers(@RequestParam Optional<Integer> page, @RequestParam Optional<Integer> size){
+        int _page=page.orElse(0);
+        int _size=size.orElse(10);
+
+        Page<SellerDTO> sellers = this.sellerCore.GetSellers(_page,_size);
+
         return new ResponseEntity<>(sellers, HttpStatus.OK);
     }
 
@@ -39,7 +45,7 @@ public class SellerControoller{
         }
     }
 
-    @PostMapping(value = "/model/new", consumes = "application/json", produces ="application/json")
+    @PostMapping(value = "/seller/new", consumes = "application/json", produces ="application/json")
     public ResponseEntity<Seller> addNewCarSeller(@RequestBody Seller seller) throws CarException {
         sellerCore.AddNewCarSeller(seller);
         return new ResponseEntity<>(seller,HttpStatus.OK);
