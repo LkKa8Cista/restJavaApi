@@ -223,10 +223,11 @@ public class CarController {
 
 
 
-    @PutMapping(value= "/car/sold/{vin}", produces = "application/json")
-    public ResponseEntity<CarDTO> setCarToSoldById(@PathVariable("vin") int vin) throws CarException {
+    @PutMapping(value= "/car/sold/{vin}/value/{value}", produces = "application/json")
+    public ResponseEntity<CarDTO> setCarToSoldById(@PathVariable("vin") int vin,
+                                                   @PathVariable("value") double value) throws CarException {
         try {
-            CarDTO car = carCore.SetCarAsSold(vin);
+            CarDTO car = carCore.SetCarAsSold(vin, value);
             return new ResponseEntity<>(car, HttpStatus.OK);
         } catch (CarException exception) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
@@ -252,7 +253,7 @@ public class CarController {
 
         String temp = type.toLowerCase().trim();
 
-        if (temp.equals("b") || temp.equals("i") || temp.equals("p") || temp.equals("s") ) {
+        if (temp.equals("b") || temp.equals("p") || temp.equals("s") ) {
             try {
                 CarDTO car = carCore.SetCarStatus(vin, type);
                 return new ResponseEntity<>(car, HttpStatus.OK);

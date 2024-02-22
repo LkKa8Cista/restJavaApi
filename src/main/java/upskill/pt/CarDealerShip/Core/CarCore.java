@@ -74,12 +74,19 @@ public class CarCore {
         }
     }
 
-    public CarDTO SetCarAsSold(int vin) throws CarException {
+    public CarDTO SetCarAsSold(int vin, double priceFinal) throws CarException {
         if(!data.existsById(vin)){
-            throw new CarException("Car", "GetCarByVin", "Vin did not exist") ;
+            throw new CarException("Car", "SetCarAsSold", "Vin did not exist") ;
         } else {
             Car temp = data.findById(vin).get();
+            double valueToCompare = temp.getPriceSell();
+
+            if (priceFinal < valueToCompare * 0.9){
+                throw new CarException("Car", "SetCarAsSold", "value inputted isn´t allowed") ;
+            }
+
             temp.setStatus(Enumerators.Status.SOLD);
+            temp.setPriceFinal(priceFinal);
             data.save(temp);
             return CarDTO.toCarDTO(temp);
         }
@@ -92,9 +99,8 @@ public class CarCore {
             Car temp = data.findById(vin).get();
             switch (set.toLowerCase().trim()){
                 case "b" -> temp.setStatus(Enumerators.Status.BOUGHT_ARRIVING);
-                case "i" -> temp.setStatus(Enumerators.Status.IN_STOCK);
+                case "s" -> temp.setStatus(Enumerators.Status.IN_STOCK);
                 case "p" -> temp.setStatus(Enumerators.Status.PROMISE);
-                case "s" -> temp.setStatus(Enumerators.Status.SOLD);
                 default -> temp.setStatus(Enumerators.Status.UNKNOWN);
             }
 

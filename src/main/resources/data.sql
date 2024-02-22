@@ -26,23 +26,23 @@ INSERT INTO Car_Model (id, name, brand_id) VALUES (10, '250 GTO', 5);
 INSERT INTO Seller (id, name, email, phone_Number) VALUES (1,'Entry with quality','ewq@gmail.com', 123456789);
 INSERT INTO Seller (id, name, email, phone_Number) VALUES (2,'Mid Tier','mt@gmail.com',456789123);
 INSERT INTO Seller (id, name, email, phone_Number) VALUES (3,'Rich Ones','ro@gmail.com',789123456);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (123,'aa-11-bb',5,2,0,7,5,2,1,1,2, 100, 150);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (234,'bb-22-cc',5,1,0,3,5,1,2,2,1, 150, 200);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (345,'cc-33-dd',4,1,0,9,3,2,3,3,3, 200, 250);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (456,'dd-44-ee',5,1,1,2,5,2,4,4,2, 250, 300);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (567,'ee-55-ff',5,1,0,2,5,2,5,5,1, 300, 350);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (678,'ff-66-gg',5,1,1,5,5,2,6,6,1, 350, 400);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (789,'gg-77-hh',5,2,0,3,5,1,7,7,1, 400, 450);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (890,'hh-88-ii',5,1,0,2,5,2,8,8,1, 450, 500);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (901,'ii-99-jj',2,0,7,9,2,3,9,9,3, 500, 550);
-INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell)
-VALUES (1123,'jj-00-kk',2,0,7,9,2,4,10,10,3, 550, 600);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (123,'aa-11-bb',5,2,0,7,5,2,1,1,2, 100, 150, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (234,'bb-22-cc',5,1,0,3,5,1,2,2,1, 150, 200, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (345,'cc-33-dd',4,1,0,9,3,2,3,3,3, 200, 250, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (456,'dd-44-ee',5,1,1,2,5,2,4,4,2, 250, 300, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (567,'ee-55-ff',5,1,0,2,5,2,5,5,1, 300, 350, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (678,'ff-66-gg',5,1,1,5,5,2,6,6,1, 350, 400, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (789,'gg-77-hh',5,2,0,3,5,1,7,7,1, 400, 450, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (890,'hh-88-ii',5,1,0,2,5,2,8,8,1, 450, 500, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (901,'ii-99-jj',2,0,7,9,2,3,9,9,3, 500, 550, 0);
+INSERT INTO Car (vin, license_Plate, seats, traction, fuel, type, doors, status, color_id, model_id, seller_id, price_buy, price_sell, price_final)
+VALUES (1123,'jj-00-kk',2,0,7,9,2,4,10,10,3, 550, 600, 595);

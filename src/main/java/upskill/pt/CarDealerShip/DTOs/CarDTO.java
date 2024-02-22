@@ -28,10 +28,11 @@ public class CarDTO extends RepresentationModel<CarDTO> {
     public CarModelDTO model;
     public SellerDTO seller;
     public double priceSell;
+    public double priceFinal;
 
     public static CarDTO toCarDTO(Car car){
         return new CarDTO(car.getVin(), car.getLicensePlate(), car.getSeats(),car.getTraction(),
                 car.getFuel(),car.getType(),car.getDoors(), ColorDTO.toColorDTO(car.getColor()),car.getStatus(),
-                CarModelDTO.toCarModelDTO(car.getModel()),SellerDTO.toSellerDTO(car.getSeller()), car.getPriceSell());
+                CarModelDTO.toCarModelDTO(car.getModel()),SellerDTO.toSellerDTO(car.getSeller()), car.getPriceSell(), car.getPriceFinal());
     }
 }

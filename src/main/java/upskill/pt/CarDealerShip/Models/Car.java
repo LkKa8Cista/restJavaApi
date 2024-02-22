@@ -41,4 +41,6 @@ public class Car {
 
     public double priceSell;
 
+    public double priceFinal;
+
 }
