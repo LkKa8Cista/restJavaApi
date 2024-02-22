@@ -15,6 +15,9 @@ import upskill.pt.CarDealerShip.Data.CarData;
 import upskill.pt.CarDealerShip.Enums.Enumerators;
 import upskill.pt.CarDealerShip.Exceptions.CarException;
 import upskill.pt.CarDealerShip.Models.Car;
+import upskill.pt.CarDealerShip.Models.CarModel;
+import upskill.pt.CarDealerShip.Models.Color;
+import upskill.pt.CarDealerShip.Models.Seller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,14 +55,14 @@ public class CarCore {
     }
 
 
-    public Car AddNewCar(Car car) throws CarException {
+    public CarDTO AddNewCar(Car car) throws CarException {
         int temp = car.getVin();
         if (data.existsById(temp)){
             throw new CarException("Car", "AddNewCar", "Vin already existed");
         }
 
         data.saveAndFlush(car);
-        return car;
+        return CarDTO.toCarDTO(car);
     }
 
     public CarDTO GetCarByVin(int vin) throws CarException {
@@ -71,16 +74,57 @@ public class CarCore {
         }
     }
 
-    public Car SetCarAsSold(int vin) throws CarException {
+    public CarDTO SetCarAsSold(int vin) throws CarException {
         if(!data.existsById(vin)){
             throw new CarException("Car", "GetCarByVin", "Vin did not exist") ;
         } else {
             Car temp = data.findById(vin).get();
             temp.setStatus(Enumerators.Status.SOLD);
             data.save(temp);
-            return temp;
+            return CarDTO.toCarDTO(temp);
         }
     }
+
+    public CarDTO SetCarStatus(int vin, String set) throws CarException {
+        if(!data.existsById(vin)){
+            throw new CarException("Car", "GetCarByVin", "Vin did not exist") ;
+        } else {
+            Car temp = data.findById(vin).get();
+            switch (set.toLowerCase().trim()){
+                case "b" -> temp.setStatus(Enumerators.Status.BOUGHT_ARRIVING);
+                case "i" -> temp.setStatus(Enumerators.Status.IN_STOCK);
+                case "p" -> temp.setStatus(Enumerators.Status.PROMISE);
+                case "s" -> temp.setStatus(Enumerators.Status.SOLD);
+                default -> temp.setStatus(Enumerators.Status.UNKNOWN);
+            }
+
+            data.save(temp);
+            return CarDTO.toCarDTO(temp);
+        }
+    }
+
+    public CarDTO UpdateCar(CarDTO car) throws CarException{
+        if(!data.existsById(car.getVin())){
+            throw new CarException("Car", "GetCarByVin", "Vin did not exist") ;
+        }
+
+        Car temp = data.findById(car.getVin()).get();
+
+        if (car.licensePlate != null) { temp.setLicensePlate(car.getLicensePlate());}
+        if (car.seats != null) { temp.setSeats(car.getSeats());}
+        if (car.traction != null) { temp.setTraction(car.getTraction());}
+        if (car.fuel != null) { temp.setFuel(car.getFuel());}
+        if (car.type != null) { temp.setType(car.getType());}
+        if (car.doors != null) { temp.setDoors(car.getDoors());}
+        if (car.color != null) { temp.setColor(new Color(car.color.getId(), car.color.getCommonName(),car.color.getHexCode()));}
+        if (car.model != null) { temp.setModel(new CarModel(car.model.getId(),car.model.getName(),car.model.getBrand()));}
+        if (car.seller != null) { temp.setSeller(new Seller(car.seller.getId(), car.seller.getName(), car.seller.getEmail(), car.seller.getPhoneNumber()));}
+        if (car.priceSell != 0) { temp.setPriceSell(car.getPriceSell());}
+
+        data.save(temp);
+        return CarDTO.toCarDTO(temp);
+    }
+    //NKNOWN, BOUGHT_ARRIVING, IN_STOCK, PROMISE, SOLD
 
 
 //    public List<Car> CarsBySeller(int id) {
@@ -104,5 +148,25 @@ public class CarCore {
         String brandUp = brand.toLowerCase().trim();
         return this.data.findCarsByBrand((PageRequest.of(page,size,Sort.by(sort))),brandUp).map(CarDTO::toCarDTO);
     }
+
+    public Page<CarDTO> CarsByType(int page, int size, String sort, String type){
+
+        int tempTypeNumber = 10;
+
+        switch (type.toLowerCase().trim()){
+            case "q" -> tempTypeNumber = 0;
+            case "a" -> tempTypeNumber = 1;
+            case "b" -> tempTypeNumber = 2;
+            case "c" -> tempTypeNumber = 3;
+            case "d" -> tempTypeNumber = 4;
+            case "e" -> tempTypeNumber = 5;
+            case "f" -> tempTypeNumber = 6;
+            case "j" -> tempTypeNumber = 7;
+            case "m" -> tempTypeNumber = 8;
+            case "s" -> tempTypeNumber = 9;
+        }
+        return tempTypeNumber != 10 ? this.data.findCarsByType((PageRequest.of(page,size,Sort.by(sort))),tempTypeNumber).map(CarDTO::toCarDTO) : null;
+    }
+
 }
 //((PageRequest.of(page,size, Sort.by(sort))).map(CarDTO::toCarDTO), id)

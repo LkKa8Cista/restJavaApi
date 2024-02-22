@@ -178,21 +178,91 @@ public class CarController {
         return new ResponseEntity<>(CollectionModel.of(carsByBrand, links),HttpStatus.OK);
     }
 
-    @PostMapping(value = "create", consumes = "application/json", produces ="application/json")
-    public ResponseEntity<Car> addNewCar(@RequestBody Car car) throws CarException {
-        carCore.AddNewCar(car);
-        return new ResponseEntity<>(car,HttpStatus.OK);
+    @GetMapping(value= "/cars/type/{name}", produces = "application/json")
+    public ResponseEntity<CollectionModel<CarDTO>> getCarsByType(@PathVariable("name") String name,
+                                                                  @RequestParam Optional<Integer> page,
+                                                                  @RequestParam Optional<Integer> size,
+                                                                  @RequestParam Optional<String> sort) {
+        int _page=page.orElse(0);
+        int _size=size.orElse(10);
+        String _sort=sort.orElse("vin");
+
+        Page<CarDTO> carsByType = this.carCore.CarsByType(_page,_size,_sort, name);
+
+        if (carsByType == null){
+            return new  ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        carsByType = carsByType.map((CarDTO d)-> {
+            try {
+                return d.add(linkTo(methodOn(CarController.class).getCarByVin(d.getVin())).withSelfRel());
+            } catch (CarException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        Link link = linkTo(methodOn(CarController.class).getCarsInStock(Optional.of(_page),Optional.of(_size),Optional.of("vin"))).withSelfRel();
+        List<Link> links = new ArrayList<>();
+        links.add(link);
+        if(!carsByType.isLast()) {
+            Link _link = linkTo(methodOn(CarController.class).getCars(Optional.of(_page + 1), Optional.of(_size))).withRel("next");
+            links.add(_link);
+        }
+        if(!carsByType.isFirst()) {
+            Link _link = linkTo(methodOn(CarController.class).getCars(Optional.of(_page - 1), Optional.of(_size))).withRel("previous");
+            links.add(_link);
+        }
+
+
+        return new ResponseEntity<>(CollectionModel.of(carsByType, links),HttpStatus.OK);
     }
 
+    @PostMapping(value = "create", consumes = "application/json", produces ="application/json")
+    public ResponseEntity<CarDTO> addNewCar(@RequestBody Car car) throws CarException {
+        return new ResponseEntity<>(carCore.AddNewCar(car),HttpStatus.OK);
+    }
+
+
+
     @PutMapping(value= "/car/sold/{vin}", produces = "application/json")
-    public ResponseEntity<Car> setCarToSoldById(@PathVariable("vin") int vin) throws CarException {
+    public ResponseEntity<CarDTO> setCarToSoldById(@PathVariable("vin") int vin) throws CarException {
         try {
-            Car car = carCore.SetCarAsSold(vin);
+            CarDTO car = carCore.SetCarAsSold(vin);
             return new ResponseEntity<>(car, HttpStatus.OK);
         } catch (CarException exception) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
+
+    @PutMapping(value= "/car/update/{vin}", produces = "application/json")
+    public ResponseEntity<CarDTO> updateCar(@PathVariable("vin") int vin,
+                                            @RequestBody CarDTO carDTO) throws CarException {
+        if (carDTO.getVin() != vin){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            return new ResponseEntity<>(carCore.UpdateCar(carDTO), HttpStatus.OK);
+        } catch (CarException exception) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @PutMapping(value= "/car/{vin}/status/{type}", produces = "application/json")
+    public ResponseEntity<CarDTO> setCarStatus(@PathVariable("vin") int vin, @PathVariable("type") String type) throws CarException {
+
+        String temp = type.toLowerCase().trim();
+
+        if (temp.equals("b") || temp.equals("i") || temp.equals("p") || temp.equals("s") ) {
+            try {
+                CarDTO car = carCore.SetCarStatus(vin, type);
+                return new ResponseEntity<>(car, HttpStatus.OK);
+            } catch (CarException exception) {
+                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            }
+        }
+        return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
 
 
 }
