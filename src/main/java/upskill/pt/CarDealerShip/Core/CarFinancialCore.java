@@ -26,9 +26,13 @@ public class CarFinancialCore {
         long size = data.count();
         Map<String, Double> results = new HashMap<>();
 
+        results.put("In House Cars", data.getTotalOfNotSold());
         results.put("In House Total", data.getSumOfNotSold());
+        results.put("Sold Cars", data.getTotalOfSold());
         results.put("Sold Total", data.getSumOfSold());
-        results.put("Difference Total", (data.getSumOfPricePVR()- data.getSumOfSold()));
+        results.put("Sold percent", (Math.round(data.getTotalOfSold() / size) * 100.0) / 100.0);
+        double temp = 100 - (data.getSumOfSold() * 100 / data.getSumOfPricePVR());
+        results.put("Difference Total", (Math.round(temp * 100.0) / 100.0));
 
         return results;
     }

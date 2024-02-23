@@ -22,12 +22,17 @@ public interface CarData extends JpaRepository<Car, Integer> {
     @Query(value = "SELECT * FROM Car WHERE TYPE = :type", nativeQuery = true)
     Page<Car> findCarsByType(Pageable page, int type);
 
-    @Query("SELECT SUM(c.priceBuy) FROM Car c WHERE c.status <> :soldStatus")
+    @Query("SELECT SUM(c.priceBuy) FROM Car c WHERE c.status <> Status.SOLD")
     Double getSumOfNotSold();
+    @Query("Select Count(c) FROM Car c WHERE c.status <> Status.SOLD")
+    Double getTotalOfNotSold();
 
-    @Query("SELECT SUM(c.priceFinal) FROM Car c WHERE c.status = :soldStatus")
+    @Query("SELECT SUM(c.priceFinal) FROM Car c WHERE c.status = Status.SOLD")
     Double getSumOfSold();
 
-    @Query("SELECT SUM(c.priceSell) FROM Car c WHERE c.status = :soldStatus")
+    @Query("Select Count(c) FROM Car c WHERE c.status = Status.SOLD")
+    Double getTotalOfSold();
+
+    @Query("SELECT SUM(c.priceSell) FROM Car c WHERE c.status = Status.SOLD")
     Double getSumOfPricePVR();
 }
